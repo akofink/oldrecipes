@@ -4,12 +4,10 @@
     if(!isset($_SESSION['currentUser'])){
         $_SESSION['currentUser'] = new User();
     }
-    if(isset($_SESSION['currentUser']) && $_SESSION['currentUser']->checkLoggedIn()){
-        $_SESSION['currentUser']->dbConnect();
-    }
+    $_SESSION['currentUser']->dbConnect();
     
     $stmt = "select * from recipes where indx=".$_GET['indx'].";";
-    $result = mysql_query($stmt);
+    $result = mysql_query($stmt) or die(mysql_error);
     while($row = mysql_fetch_array($result)){
         echo '
             <h2>'.$row['title'].'</h2>
