@@ -24,9 +24,14 @@
             <a href=\"addRecipe.php\">New Recipe</a> | 
             <a href=\"editUser.php\">Edit Account</a> | 
             <a href=\"logout.php\">Logout</a><br /><br />
-            You are logged in as ".$_SESSION['currentUser']->username."
-            </div>
-            ";
+            You are logged in as ".$_SESSION['currentUser']->username;
+        if($_SESSION['currentUser']->username=='akofink'){
+            echo '<br /><br />
+                Welcome, Andrew.
+                <a href="admin.php">Admin Home</a>
+                ';
+        }
+        echo '</div>';
     }else {
         $_SESSION['currentUser']->dbConnect();
         echo "

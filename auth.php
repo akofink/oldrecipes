@@ -192,6 +192,16 @@ class User {
         ';
     }
     
+    function emailAllUsers($subject, $message) {
+        $this->dbConnect();
+        $qry = 'select email from auth';
+        $result = mysql_query($qry) or die(mysql_error);
+        $headers = 'From: Andrew_Kofink';
+        while($row = mysql_fetch_array($result)) {
+            mail($row['email'],$subject,$message,$headers);
+        }
+    }
+    
     function login($username, $password) {
         $this->dbConnect();
         
@@ -225,6 +235,7 @@ class User {
         $this->lastname = '';
         $this->email = '';
         $this->password = '';
+        session_destroy();
     }
 }
 
