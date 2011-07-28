@@ -85,6 +85,7 @@ class User {
         $qry = "delete from ".$this->table." 
                 where ".$this->usernameCol."='".$this->username."';";
         mysql_query($qry) or die('Could not delete user');
+        $this->logout();
         echo 'Account '.$this->username.' deleted successfully.<br />
         You will be redirected <a href=".">here</a>.
         <meta http-equiv="refresh" content="1; url=." />
