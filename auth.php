@@ -49,8 +49,8 @@ class User {
             die();
         }
         echo $username.' added successfully.<br />
-        You will be redirected <a href="index.php">here</a> in 5 seconds.
-        <meta http-equiv="refresh" content="5; url=index.php" />
+        You will be redirected <a href="login.php">here</a>.
+        <meta http-equiv="refresh" content="1; url=login.php" />
         ';
     }
     
@@ -62,8 +62,8 @@ class User {
         mysql_query($qry) or die('Could not update user');
         $this->password = $newPassword;
         echo 'Password updated successfully for '.$this->username.'.<br />
-        You will be redirected <a href="index.php">here</a> in 5 seconds.
-        <meta http-equiv="refresh" content="5; url=index.php" />
+        You will be redirected <a href="index.php">here</a>.
+        <meta http-equiv="refresh" content="1; url=index.php" />
         ';
     }
     
@@ -86,8 +86,8 @@ class User {
                 where ".$this->usernameCol."='".$this->username."';";
         mysql_query($qry) or die('Could not delete user');
         echo 'Account '.$this->username.' deleted successfully.<br />
-        You will be redirected <a href="logout.php">here</a> in 5 seconds.
-        <meta http-equiv="refresh" content="5; url=logout.php" />
+        You will be redirected <a href=".">here</a>.
+        <meta http-equiv="refresh" content="1; url=." />
         ';
     }
     
@@ -187,8 +187,8 @@ class User {
         $this->lastname=$lastname;
         $this->email=$email;
         echo $username.' updated successfully.<br />
-        You will be redirected <a href="index.php">here</a> in 5 seconds.
-        <meta http-equiv="refresh" content="5; url=index.php" />
+        You will be redirected <a href="index.php">here</a>.
+        <meta http-equiv="refresh" content="1; url=index.php" />
         ';
     }
     
@@ -219,12 +219,12 @@ class User {
             $this->email = $row['email'];
             $this->password = $row['password'];
             echo "Login successful.";
-            echo "You will be redirected <a href=\".\">here</a> in 5 seconds.";
-            echo "<meta http-equiv=\"refresh\" content=\"5; url=.\" />";
+            echo "You will be redirected <a href=\".\">here</a>.";
+            echo "<meta http-equiv=\"refresh\" content=\"1; url=.\" />";
         }else {
             echo "Invalid username/password.";
-            echo "You will be redirected <a href=\".\">here</a> in 5 seconds.";
-            echo "<meta http-equiv=\"refresh\" content=\"5; url=.\" />";
+            echo "You will be redirected <a href=\".\">here</a>.";
+            echo "<meta http-equiv=\"refresh\" content=\"1; url=.\" />";
         }
     }
     
@@ -278,8 +278,8 @@ class Recipe {
         }
         
         echo "<h4>Recipe Added</h4><br />";
-        echo "<meta http-equiv=\"refresh\" content=\"5; url=.\" />";
-        echo "You will be redirected in 5 seconds. If not, click <a href=\".\">here</a>.";
+        echo "<meta http-equiv=\"refresh\" content=\"1; url=.\" />";
+        echo "You will be redirected. If not, click <a href=\".\">here</a>.";
     }
     
     function dbConnect() {
@@ -296,8 +296,8 @@ class Recipe {
         mysql_query($qry) or die('Error: ' . mysql_error().'<hr />'.$qry);
         
         echo "<h4>Recipe Deleted</h4><br />";
-        echo "You will be redirected in 5 seconds. If not, click <a href=\".\">here</a>.";
-        echo '<meta http-equiv="refresh" content="5; url=." />';
+        echo "You will be redirected. If not, click <a href=\".\">here</a>.";
+        echo '<meta http-equiv="refresh" content="1; url=." />';
     }
     
     function displayEditRecipeForm($indx="", $title="", $type="", $image="", $ingredients="", $directions="") {
@@ -361,8 +361,8 @@ class Recipe {
         }
         
         echo "<h4>Recipe Updated</h4><br />";
-        echo "<meta http-equiv=\"refresh\" content=\"5; url=.\" />";
-        echo "You will be redirected in 5 seconds. If not, click <a href=\".\">here</a>.";
+        echo "<meta http-equiv=\"refresh\" content=\"1; url=.\" />";
+        echo "You will be redirected. If not, click <a href=\".\">here</a>.";
     }
 }
 

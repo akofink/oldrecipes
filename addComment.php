@@ -9,8 +9,8 @@
                                                $_POST['reply_id']);
             echo '
                 Response added successfully.<br />
-                You will be redirected <a href="showForm.php?indx='.$_POST['indx'].'">here</a> in five seconds.
-                <meta http-equiv="refresh" content="5; url=showForm.php?indx='.$_POST['indx'].'" />
+                You will be redirected <a href="showForm.php?indx='.$_POST['indx'].'">here</a>.
+                <meta http-equiv="refresh" content="1; url=showForm.php?indx='.$_POST['indx'].'" />
                 ';
         }else {
             $_SESSION['currentRecipe']->addComment($_POST['indx'],
@@ -18,8 +18,8 @@
                                                $_POST['comment']);
             echo '
                 Comment added successfully.<br />
-                You will be redirected <a href="showForm.php?indx='.$_POST['indx'].'">here</a> in five seconds.
-                <meta http-equiv="refresh" content="5; url=showForm.php?indx='.$_POST['indx'].'" />
+                You will be redirected <a href="showForm.php?indx='.$_POST['indx'].'">here</a>.
+                <meta http-equiv="refresh" content=1; url=showForm.php?indx='.$_POST['indx'].'" />
                 ';
         }
     }else {
