@@ -27,18 +27,23 @@
             You are logged in as ".$_SESSION['currentUser']->username."
             </div>
             ";
-    }
+    }else {
+        $_SESSION['currentUser']->dbConnect();
+        echo "
             
+            <div style=\"float:right;\"> 
+            <a href=\"login.php\">Login</a><br /><br />
+            </div>
+            "; 
+    }
     echo "<a href=\".\">Recipes Home</a><br /><br />";
     
-    if(isset($_SESSION['currentUser']) && $_SESSION['currentUser']->checkLoggedIn()){
-        echo "
-            <form action=\"searchRecipes.php\" method=\"get\">
-                <input type=\"text\" name=\"searchfield\" value=\"".$_GET['searchfield']."\"; ?>
-            <input type=\"submit\" value=\"search\" />
-            </form>
-            ";
-    }
+    echo "
+        <form action=\"searchRecipes.php\" method=\"get\">
+            <input type=\"text\" name=\"searchfield\" value=\"".$_GET['searchfield']."\"; ?>
+        <input type=\"submit\" value=\"search\" />
+        </form>
+        ";
             
     echo "<h4>This site is still under construction</h4><hr />";
     
