@@ -1,7 +1,7 @@
 body {
     background-color:#641;
     color:#ccc;
-    font-size:18px;
+    font-size:16px;
     font-family:helvetica, sans-serif;
 }
 a:link {color:#bfb;}
@@ -20,4 +20,23 @@ th {
 }
 form {
     display:inline;
+}
+.comment {
+    background-color:#541;
+    width:450px;
+    border:2px outset #530;
+    padding:5px;
+}
+h3, h5 {
+    margin:0;
+    padding:0;
+}
+#reply_id {
+    position:relative;
+    left:400px;
+}
+#login_to_reply {
+    font-size:14px;
+    position:relative;
+    left:355px;
 }

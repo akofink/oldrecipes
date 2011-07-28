@@ -236,6 +236,21 @@ class Recipe {
     
     var $dbconnection = '';
     
+    function addComment($indx, $subject, $comment, $reply_id=0) {
+        $this->dbConnect();
+        $qry = 'insert into comments
+                (username, indx, date, subject, comment, reply_id)
+                values(
+                "'.$_SESSION['currentUser']->username.'",
+                "'.$indx.'",
+                now(),
+                "'.$subject.'",
+                "'.$comment.'",
+                "'.$reply_id.'"
+                )';
+        mysql_query($qry) or die(mysql_error());
+    }
+    
     function addRecipe($title, $user, $type, $imageLocation, $ingredients, $directions) {
         $this->dbConnect();
         
