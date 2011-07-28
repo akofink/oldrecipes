@@ -220,6 +220,11 @@ class User {
     
     function logout() {
         $this->loggedIn = false;
+        $this->username = '';
+        $this->firstname = '';
+        $this->lastname = '';
+        $this->email = '';
+        $this->password = '';
     }
 }
 
