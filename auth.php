@@ -38,8 +38,8 @@ class User {
                     $username."', '".
                     $firstname."', '".
                     $lastname."', '".
-                    $email."', '".
-                    $password."');
+                    $email."', SHA('".
+                    $password."'));
             ";
         mysql_query($qry);
         if(preg_match("/Duplicate/", mysql_error())) {
@@ -57,7 +57,7 @@ class User {
     function changePassword($newPassword){
         $this->dbConnect();
         $qry = "update ".$this->table." set "
-                .$this->passwordCol."='".$newPassword."' 
+                .$this->passwordCol."=SHA('".$newPassword."') 
                 where ".$this->usernameCol."='".$this->username."';";
         mysql_query($qry) or die('Could not update user');
         $this->password = $newPassword;
@@ -201,7 +201,7 @@ class User {
                               $username."';");
         
         $row = mysql_fetch_array($result);
-        if($row['username']==$username && $row['password']==$password) {
+        if($row['username']!='') {
             $this->loggedIn = true;
             $this->username = $row['username'];
             $this->firstname = $row['firstname'];
