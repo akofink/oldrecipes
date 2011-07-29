@@ -7,7 +7,7 @@
         $user = $row['user'];
     }
     
-    if($_SESSION['currentUser']->username!=$user){
+    if($_SESSION['currentUser']->username!=$user && $_SESSION['currentUser']->userlevel!=1){
         header('Location: .');
     }else if($_GET['verified']) {
         $_SESSION['currentRecipe']->deleteRecipe($_GET['indx']);

@@ -1,10 +1,11 @@
 <?php
     include("header.php");
     
-    if($_SESSION['currentUser']->checkLoggedIn() && $_SESSION['currentUser']->username=='akofink'){
+    if($_SESSION['currentUser']->checkLoggedIn() && $_SESSION['currentUser']->userlevel==1){
         echo '
             <ul style="list-style:none;">
                 <li><a href="emailRecipeUsers.php">Email Recipe Users</a></li>
+                <li><a href="listUsers.php">List Users</a></li>
             </ul>
             ';
     }else {

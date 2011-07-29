@@ -25,9 +25,9 @@
             <a href=\"editUser.php\">Edit Account</a> | 
             <a href=\"logout.php\">Logout</a><br /><br />
             You are logged in as ".$_SESSION['currentUser']->username;
-        if($_SESSION['currentUser']->username=='akofink'){
+        if($_SESSION['currentUser']->userlevel==1){
             echo '<br /><br />
-                Welcome, Andrew.
+                Welcome, '.$_SESSION['currentUser']->firstname.'.
                 <a href="admin.php">Admin Home</a>
                 ';
         }

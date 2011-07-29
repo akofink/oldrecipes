@@ -26,6 +26,7 @@ class User {
     var $lastname = '';
     var $email = '';
     var $password = '';
+    var $userlevel = 0;
     
     function addUser($username, $firstname, $lastname, $email, $password) {
         $this->dbConnect();
@@ -219,6 +220,7 @@ class User {
             $this->lastname = $row['lastname'];
             $this->email = $row['email'];
             $this->password = $row['password'];
+            $this->userlevel = $row['userlevel'];
             echo "Login successful.";
             echo "You will be redirected <a href=\".\">here</a>.";
             echo "<meta http-equiv=\"refresh\" content=\"1; url=.\" />";
@@ -236,6 +238,7 @@ class User {
         $this->lastname = '';
         $this->email = '';
         $this->password = '';
+        $this->userlevel = 0;
         session_destroy();
     }
 }

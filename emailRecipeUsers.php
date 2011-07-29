@@ -1,7 +1,7 @@
 <?php
     include("header.php");
     
-    if($_SESSION['currentUser']->checkLoggedIn() && $_SESSION['currentUser']->username=='akofink'){
+    if($_SESSION['currentUser']->checkLoggedIn() && $_SESSION['currentUser']->userlevel==1){
         echo '<h1>Email All Users</h1>';
         if(isset($_POST['subject']) && $_POST['message'] && $_POST['verified']=="true") {
             $_SESSION['currentUser']->emailAllUsers($_POST['subject'], $_POST['message']);
