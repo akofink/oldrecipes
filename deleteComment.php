@@ -11,6 +11,15 @@
         header('Location: .');
     }else if($_GET['verified']) {
         $_SESSION['currentRecipe']->deleteComment($_GET['comment_id']);
+        
+        #Update Number of Comments for User
+        $numberOfComments = mysql_fetch_array(mysql_query(
+                                    'select count(*) from comments
+                                    where username="'.$user.'"'));
+        $numberOfComments = $numberOfComments[0];
+        mysql_query('update auth set no_of_comments='.$numberOfComments.' where
+                        username="'.$user.'"') or die(mysql_error());
+        
         echo "<h4>Comment Deleted</h4><br />";
         echo "You will be redirected. If not, click <a href=\".\">here</a>.";
         echo '<meta http-equiv="refresh" content="1; url=." />';

@@ -272,6 +272,16 @@ class Recipe {
                 )';
         mysql_query($qry) or die(mysql_error());
         
+        #Update Comment Count
+        $numberOfComments = mysql_fetch_array(mysql_query(
+                                    'select count(*) from comments
+                                    where username="'.
+                                    $_SESSION['currentUser']->username.'"'));
+        $numberOfComments = $numberOfComments[0];
+        mysql_query('update auth set no_of_comments='.$numberOfComments.' where
+                        username="'.$_SESSION['currentUser']->username.'"') or die(mysql_error());
+        
+        #Notify Recipe Creator of New Comment
         $qry = 'select auth.email, recipes.title
                 from recipes
                 left join auth
@@ -300,6 +310,14 @@ class Recipe {
             die('Error: ' . mysql_error().'<hr />'.$qry);
         }
         
+        #Update Recipe Count
+        $numberOfRecipes = mysql_fetch_array(mysql_query(
+                                    'select count(*) from recipes
+                                    where user="'.$user.'"'));
+        $numberOfRecipes = $numberOfRecipes[0];
+        mysql_query('update auth set no_of_recipes='.$numberOfRecipes.' where
+                        username="'.$user.'"') or die(mysql_error());
+        
         echo "<h4>Recipe Added</h4><br />";
         echo "<meta http-equiv=\"refresh\" content=\"1; url=.\" />";
         echo "You will be redirected. If not, click <a href=\".\">here</a>.";
@@ -310,7 +328,9 @@ class Recipe {
     }
     
     function deleteComment($comment_id) {
-        $qry = 'select comment_id, reply_id from comments where
+        
+        #Delete Comment
+        $qry = 'select comment_id, reply_id, username from comments where
                     comment_id='.$comment_id.' or '.
                     'reply_id='.$comment_id.';';
         $result = mysql_query($qry) or die(mysql_error());
@@ -324,13 +344,31 @@ class Recipe {
     }
     
     function deleteRecipe($indx) {
+        
+        #Get User of Recipe
+        $user = mysql_fetch_array(
+                    mysql_query('select user from recipes where indx='.$indx))
+                    or die(mysql_error());
+        $user = $user[0];
+        
+        #Delete Recipe Picture
         $row = mysql_fetch_assoc(mysql_query('select imageLocation from recipes where indx='.$indx));
         if($row['imageLocation']!='') {
             unlink($row['imageLocation']) or die('Could not delete file '. $row['imageLocation']);
         }
         
+        #Delete Recipe
         $qry = "delete from recipes where indx=".$indx;
         mysql_query($qry) or die('Error: ' . mysql_error().'<hr />'.$qry);
+        
+        #Update User's Recipe Count
+        $numberOfRecipes = mysql_fetch_array(mysql_query(
+                                    'select count(*) from recipes
+                                    where user="'.$user.'"'))
+                                    or die(mysql_error());
+        $numberOfRecipes = $numberOfRecipes[0];
+        mysql_query('update auth set no_of_recipes='.$numberOfRecipes.' where
+                        username="'.$user.'"') or die(mysql_error());
         
         echo "<h4>Recipe Deleted</h4><br />";
         echo "You will be redirected. If not, click <a href=\".\">here</a>.";
