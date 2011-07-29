@@ -40,8 +40,11 @@
                     select date_format("'.$row['date'].'","%M %D, %Y at %l:%i%p");'));
             $formattedDate = $formattedDateArr[0];
             echo '
-                <div class="comment" style="margin-left:'.($_SESSION['level']*50).'px;">
-                    <h3 style="font-style:italic">'.$row['subject'].'</h3>
+                <div class="comment" style="margin-left:'.($_SESSION['level']*50).'px;">';
+            if($row['username']==$_SESSION['currentUser']->username) {
+                echo '<a href="deleteComment.php?comment_id='.$row['comment_id'].'" style="float:right">X</a>';
+            }
+            echo '<h3 style="font-style:italic">'.$row['subject'].'</h3>
                     <h5>'.$row['username'].' on
                     '.$formattedDate.'</h5>
                     <p>'.$row['comment'].'</p>';
@@ -83,9 +86,11 @@
         $formattedDateArr = mysql_fetch_array(mysql_query('
                 select date_format("'.$row['date'].'","%M %D, %Y at %l:%i%p");'));
         $formattedDate = $formattedDateArr[0];
-        echo '
-            <div class="comment">
-                <h3 style="font-style:italic">'.$row['subject'].'</h3>
+        echo '<div class="comment">';
+        if($row['username']==$_SESSION['currentUser']->username) {
+            echo '<a href="deleteComment.php?comment_id='.$row['comment_id'].'" style="float:right">X</a>';
+        }
+        echo '<h3 style="font-style:italic">'.$row['subject'].'</h3>
                 <h5>'.$row['username'].' on
                 '.$formattedDate.'</h5>
                 <p>'.$row['comment'].'</p>';

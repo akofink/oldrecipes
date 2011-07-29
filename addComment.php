@@ -19,7 +19,7 @@
             echo '
                 Comment added successfully.<br />
                 You will be redirected <a href="showForm.php?indx='.$_POST['indx'].'">here</a>.
-                <meta http-equiv="refresh" content=1; url=showForm.php?indx='.$_POST['indx'].'" />
+                <meta http-equiv="refresh" content="1; url=showForm.php?indx='.$_POST['indx'].'" />
                 ';
         }
     }else {

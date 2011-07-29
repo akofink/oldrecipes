@@ -17,5 +17,5 @@
             <p>'.$row['directions'].'</p>
             ';
     }
-    echo '<script type="text/javascript">window.print();</script>';
 ?>
+<script type="text/javascript">setTimeout('window.print()',100);</script>

@@ -264,6 +264,18 @@ class Recipe {
                 "'.$reply_id.'"
                 )';
         mysql_query($qry) or die(mysql_error());
+        
+        $qry = 'select auth.email, recipes.title
+                from recipes
+                left join auth
+                on recipes.user=auth.username
+                where recipes.indx=37;';
+        $result = mysql_fetch_assoc(mysql_query($qry)) or die(mysql_error());
+        mail($result['email'], 'New Comment from '.
+             $_SESSION['currentUser']->firstname.' '.$_SESSION['currentUser']->lastname.
+             ' on recipes.akofink.com', '
+             Log in to see your new comment that was posted on your recipe titled '.
+             $result['title'].'.','From: Andrew_Kofink');
     }
     
     function addRecipe($title, $user, $type, $imageLocation, $ingredients, $directions) {
@@ -288,6 +300,20 @@ class Recipe {
     
     function dbConnect() {
         $_SESSION['currentUser']->dbConnect();
+    }
+    
+    function deleteComment($comment_id) {
+        $qry = 'select comment_id, reply_id from comments where
+                    comment_id='.$comment_id.' or '.
+                    'reply_id='.$comment_id.';';
+        $result = mysql_query($qry) or die(mysql_error());
+        while($row = mysql_fetch_array($result)) {
+            $ids[] = $row['comment_id'];
+        }
+        foreach($ids as $id) {
+            mysql_query('delete from comments where comment_id='.$id.';') or die(mysql_error());
+            $this->deleteComment($id);
+        }
     }
     
     function deleteRecipe($indx) {
