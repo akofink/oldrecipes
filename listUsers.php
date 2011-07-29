@@ -15,7 +15,7 @@
         while($row = mysql_fetch_array($result)) {
             echo '<tr>
                     <td>'.$row['lastname'].', '.$row['firstname'].'</td>
-                    <td><a href="searchRecipes.php?searchfield='.$row['username'].'">'.$row['username'].'</a></td>
+                    <td>'.$row['username'].'</td>
                     <td><a href="mailto:'.$row['email'].'">'.$row['email'].'</td>
                     <td><a href="viewUserDetails.php?username='.$row['username'].'">View</a></td>
                     </tr>';
