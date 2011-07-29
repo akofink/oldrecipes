@@ -81,16 +81,23 @@ class User {
                 or die ('Unable to select database: '.mysql_error());
     }
     
-    function deleteAccount() {
-        $this->dbConnect();
-        $qry = "delete from ".$this->table." 
-                where ".$this->usernameCol."='".$this->username."';";
-        mysql_query($qry) or die('Could not delete user');
-        $this->logout();
-        echo 'Account '.$this->username.' deleted successfully.<br />
-        You will be redirected <a href=".">here</a>.
-        <meta http-equiv="refresh" content="1; url=." />
-        ';
+    function deleteAccount($username) {
+        if($this->username==$username || $this->userlevel==1) {
+            $this->dbConnect();
+            $qry = "delete from ".$this->table." 
+                    where ".$this->usernameCol."='".$username."';";
+            mysql_query($qry) or die('Could not delete user');
+            if($this->username==$username) {
+                $this->logout();
+            }
+            echo 'Account '.$username.' deleted successfully.<br />
+            You will be redirected <a href=".">here</a>.
+            <meta http-equiv="refresh" content="1; url=." />
+            ';
+        }else {
+            echo '<meta http-equiv="refresh" content="0; url=." />';
+        }
+        
     }
     
     function displayChangePasswordForm() {
@@ -156,7 +163,7 @@ class User {
                 
                 <a href="changePassword.php">Change Password</a><br /><br />
                 
-                <a href="deleteAccount.php" style="color:#f33;">Delete Account</a>
+                <a href="deleteAccount.php?username='.$_SESSION['currentUser']->username.'" style="color:#f33;">Delete Account</a>
                 ';
     }
     

@@ -4,7 +4,7 @@
     if($_SESSION['currentUser']->checkLoggedIn() && $_SESSION['currentUser']->userlevel==1){
         echo '
             <h1>User Listing</h1>
-            <table>
+            <table><th></th>
             <th>Name</th>
             <th>Username</th>
             <th>Email</th>
@@ -14,6 +14,7 @@
         $result = mysql_query($qry);
         while($row = mysql_fetch_array($result)) {
             echo '<tr>
+                    <td><a href="deleteAccount.php?username='.$row['username'].'">x</a></td>
                     <td>'.$row['lastname'].', '.$row['firstname'].'</td>
                     <td>'.$row['username'].'</td>
                     <td><a href="mailto:'.$row['email'].'">'.$row['email'].'</td>
