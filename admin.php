@@ -4,7 +4,7 @@
     if($_SESSION['currentUser']->checkLoggedIn() && $_SESSION['currentUser']->userlevel==1){
         echo '
             <ul style="list-style:none;">
-                <li><a href="emailRecipeUsers.php">Email Recipe Users</a></li>
+                <li><a href="emailRecipeUsers.php">Email All Users</a></li>
                 <li><a href="listUsers.php">List Users</a></li>
             </ul>
             ';

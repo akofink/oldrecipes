@@ -276,7 +276,7 @@ class Recipe {
                 from recipes
                 left join auth
                 on recipes.user=auth.username
-                where recipes.indx=37;';
+                where recipes.indx='.$indx.';';
         $result = mysql_fetch_assoc(mysql_query($qry)) or die(mysql_error());
         mail($result['email'], 'New Comment from '.
              $_SESSION['currentUser']->firstname.' '.$_SESSION['currentUser']->lastname.

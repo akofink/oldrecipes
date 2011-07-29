@@ -40,3 +40,6 @@ h3, h5 {
     position:relative;
     left:355px;
 }
+#arrow {
+    text-decoration:none;
+}
