@@ -288,11 +288,55 @@ class Recipe {
                 on recipes.user=auth.username
                 where recipes.indx='.$indx.';';
         $result = mysql_fetch_assoc(mysql_query($qry)) or die(mysql_error());
-        mail($result['email'], 'New Comment from '.
-             $_SESSION['currentUser']->firstname.' '.$_SESSION['currentUser']->lastname.
-             ' on recipes.akofink.com', '
-             Log in to see your new comment that was posted on your recipe titled '.
-             $result['title'].'.','From: Andrew_Kofink');
+        
+        $recipetitle = $result['title'];
+        $emails = array($result['email']);
+        $firstnames = array($_SESSION['currentUser']->firstname);
+        $lastnames = array($_SESSION['currentUser']->lastname);
+        
+        #Notify Replyee of New Comment by Replyer
+        $qry = 'select auth.firstname, auth.lastname, auth.email, recipes.title from comments
+        left join recipes on comments.indx=recipes.indx
+        left join auth on comments.username=auth.username
+        where recipes.indx='.$indx.';';
+        $result = mysql_query($qry) or die(mysql_error());
+        while($row = mysql_fetch_array($result)) {
+            $exists = false;
+            //email
+            foreach($emails as $email) {
+                if ($email == $row['email']) {
+                    $exists = true;
+                }
+            }
+            if(!$exists) {
+                array_push($emails, $row['email']);
+                $exists = false;
+            }
+            //firstname
+            foreach($firstnames as $firstname) {
+                if ($firstname == $row['firstname']) {
+                    $exists = true;
+                }
+            }
+            if (!$exists) {
+                array_push($firstnames, $row['firstname']);
+                $exists = false;
+            }
+            //lastname
+            foreach($lastnames as $lastname) {
+                if ($lastname == $row['lastname']) {
+                    $exists = true;
+                }
+            }
+            if (!$exists) {
+                array_push($lastnames, $row['lastname']);
+            }
+        }
+        for($i = 0; $i < count($emails); $i++) {
+            mail($emails[$i], 'New Comment on recipes.akofink.com', '
+                Log in to see the new comment that was posted on the recipe titled '.
+                $recipetitle.'.','From: Andrew_Kofink');
+        }
     }
     
     function addRecipe($title, $user, $type, $imageLocation, $ingredients, $directions) {
