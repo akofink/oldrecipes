@@ -1,0 +1,2 @@
+#!/bin/bash
+mysqldump -uroot -pskylark243 --databases recipes > ./latest.sql
