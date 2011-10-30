@@ -1,2 +1,2 @@
 #!/bin/bash
-mysql -uroot -pskylark243 christmaslists < ./latest.sql
+mysql -uroot -pskylark243 recipes < ./latest.sql
