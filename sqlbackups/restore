@@ -1,2 +1,3 @@
 #!/bin/bash
+cd /var/www/recipes/sqlbackups
 mysql -uroot -p$1 recipes < ./latest.sql
