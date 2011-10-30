@@ -1,2 +1,2 @@
 #!/bin/bash
-mysql -uroot -pskylark243 recipes < ./latest.sql
+mysql -uroot -p$1 recipes < ./latest.sql
