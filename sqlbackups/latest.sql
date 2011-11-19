@@ -48,7 +48,7 @@ CREATE TABLE `auth` (
 
 LOCK TABLES `auth` WRITE;
 /*!40000 ALTER TABLE `auth` DISABLE KEYS */;
-INSERT INTO `auth` VALUES ('akofink','Andrew','Kofink','akofink@me.com','403029f8ef4151611b5061d0d0b38ccbd9bd5237',NULL,3,0);
+INSERT INTO `auth` VALUES ('akofink','Andrew','Kofink','akofink@me.com','403029f8ef4151611b5061d0d0b38ccbd9bd5237',NULL,4,0);
 /*!40000 ALTER TABLE `auth` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +96,7 @@ CREATE TABLE `recipes` (
   `ingredients` varchar(5000) DEFAULT NULL,
   `directions` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`indx`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +105,7 @@ CREATE TABLE `recipes` (
 
 LOCK TABLES `recipes` WRITE;
 /*!40000 ALTER TABLE `recipes` DISABLE KEYS */;
-INSERT INTO `recipes` VALUES (4,'Guacamole','akofink','Appetizer','uploads/avocado1.jpg','Avocado\r\nTomato\r\nOnion\r\nLime Juice\r\nCumin\r\nSpice if desired (Peppers, etc.)','Mix it all together and enjoy!'),(5,'Lentil Soup (Vegetarian)','akofink','Soup','uploads/lentilsoup2.gif','2 cups lentils\r\n4 cups water\r\n4 cups vegetable broth4\r\n1 onion, diced\r\n3 stalks celery, sliced\r\n2 carrots, chopped\r\n2 cloves garlic, minced\r\n1 tsp salt\r\n1/4 tsp black pepper\r\n1/2 tsp oregano\r\n1 14 ounce can diced tomatoes','Put everything together in a crock pot for a few hours until the house smells great.'),(6,'Black Bean Soup','akofink','Soup','uploads/BlackBeanSoup.jpg','1 tablespoon olive oil\r\n1 large onion, chopped\r\n1 stalk celery, chopped\r\n2 carrots, chopped\r\n4 cloves garlic, chopped\r\n2 tablespoons chili powder\r\n1 tablespoon ground cumin\r\n1 pinch black pepper\r\n4 cups vegetable broth\r\n4 (15 ounce) cans black beans\r\n1 (15 ounce) can whole kernel corn\r\n1 (14.5 ounce) can crushed tomatoes','<ol><li>Heat oil in a large pot over medium-high heat. Saute onion, celery, carrots and garlic for 5 minutes. Season with chili powder, cumin, and black pepper; cook for 1 minute. Stir in vegetable broth, 2 cans of beans, and corn. Bring to a boil.</li>\r\n<li>Meanwhile, in a food processor or blender, process remaining 2 cans beans and tomatoes until smooth. Stir into boiling soup mixture, reduce heat to medium, and simmer for 15 minutes.</li>\r\n</ol>');
+INSERT INTO `recipes` VALUES (4,'Guacamole','akofink','Appetizer','uploads/avocado1.jpg','Avocado\r\nTomato\r\nOnion\r\nLime Juice\r\nCumin\r\nSpice if desired (Peppers, etc.)','Mix it all together and enjoy!'),(5,'Lentil Soup (Vegetarian)','akofink','Soup','uploads/lentilsoup2.gif','2 cups lentils\r\n4 cups water\r\n4 cups vegetable broth4\r\n1 onion, diced\r\n3 stalks celery, sliced\r\n2 carrots, chopped\r\n2 cloves garlic, minced\r\n1 tsp salt\r\n1/4 tsp black pepper\r\n1/2 tsp oregano\r\n1 14 ounce can diced tomatoes','Put everything together in a crock pot for a few hours until the house smells great.'),(6,'Black Bean Soup','akofink','Soup','uploads/BlackBeanSoup.jpg','1 tablespoon olive oil\r\n1 large onion, chopped\r\n1 stalk celery, chopped\r\n2 carrots, chopped\r\n4 cloves garlic, chopped\r\n2 tablespoons chili powder\r\n1 tablespoon ground cumin\r\n1 pinch black pepper\r\n4 cups vegetable broth\r\n4 (15 ounce) cans black beans\r\n1 (15 ounce) can whole kernel corn\r\n1 (14.5 ounce) can crushed tomatoes','<ol><li>Heat oil in a large pot over medium-high heat. Saute onion, celery, carrots and garlic for 5 minutes. Season with chili powder, cumin, and black pepper; cook for 1 minute. Stir in vegetable broth, 2 cans of beans, and corn. Bring to a boil.</li>\r\n<li>Meanwhile, in a food processor or blender, process remaining 2 cans beans and tomatoes until smooth. Stir into boiling soup mixture, reduce heat to medium, and simmer for 15 minutes.</li>\r\n</ol>'),(7,'Candied Yams','akofink','Casserole','','6 large bright orange sweet potatoes\r\n1 lb. dark brown sugar\r\n1 stick of butter\r\n2 cups of miniature marshmallows\r\n1/4 cup of white sugar\r\n2 teaspoons of salt','<p>Wash and peel potatoes. Chunk potatoes into 2 inch disks. Put potatoes in a pan and cover with water. Add 2 teaspoons of salt and 1/4 cup of white sugar to the potatoes and water. Cover. Boil until potatoes are fork tender (approximately 30 minutes). Drain potatoes.\r\nPut potatoes in a baking dish and sprinkle with brown sugar. Dot potatoes with butter.\r\n</p><p>\r\nBake for 20 minutes in 350 degree oven. Sprinkle with marshmallows. Return to oven and bake until marshmallows are brown.</p>');
 /*!40000 ALTER TABLE `recipes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -118,4 +118,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-11-18  8:00:01
+-- Dump completed on 2011-11-19  8:00:01
