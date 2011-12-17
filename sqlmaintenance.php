@@ -16,7 +16,8 @@ DISPTOP;
 DISPBOTTOM;
 
 	$content = <<<CONTENT
-				<a href="?do=backup">Backup</a>
+				<a href="?do=backup">Backup</a> <br />
+				<a href="?do=restore">Restore</a>
 CONTENT;
 
 	$login = <<<LOGIN
@@ -69,7 +70,7 @@ LOGOUT;
 	
 	function createUser() {
 		$qry = <<<QUERY
-		create user 
+		create user
 		anonymous@localhost
 QUERY;
 		mysql_query($qry);
@@ -95,5 +96,6 @@ COM;
 		$command = <<<COM
 		mysql -u $user -p $pass < sqlbackups/lastest.sql
 COM;
+		exec($command);
 	}
 ?>
