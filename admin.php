@@ -6,6 +6,7 @@
             <ul style="list-style:none;">
                 <li><a href="emailRecipeUsers.php">Email All Users</a></li>
                 <li><a href="listUsers.php">List Users</a></li>
+                <li><a href="mysqlmaintenance.php">MySQL Maintenance</a></li>
             </ul>
             ';
     }else {
