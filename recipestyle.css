@@ -43,3 +43,13 @@ h3, h5 {
 #arrow {
     text-decoration:none;
 }
+#SqlMaintenanceLoginForm {
+	display:block;
+	width:300px;
+	margin-left:auto;
+	margin-right:auto;
+	padding:10px;
+	background-color:#db7;
+	color:black;
+    border:2px solid white;
+}
