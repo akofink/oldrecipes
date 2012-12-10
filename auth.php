@@ -2,10 +2,10 @@
 session_start();
 class User {
     //database access
-    var $host = 'localhost';
-    var $database = 'recipes';
-    var $dbusername = 'anonymous';
-    var $dbpassword = '';
+    var $host = 'mysql1.000webhost.com';
+    var $database = 'a6169600_recipes';
+    var $dbusername = 'a6169600_recipes';
+    var $dbpassword = 'skylark243';
     
     var $dbconnection = '';
     
